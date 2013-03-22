@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  binding.pry
+  
   def index
     @tags = Tag.all
   end

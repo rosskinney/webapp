@@ -20,5 +20,10 @@ WebApp::Application.routes.draw do
   resources :articles
   resources :tags
   resources :projects
-    
+  resources :archives
+
+  
+ 
+  
+
 end

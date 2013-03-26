@@ -6,14 +6,18 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article      = Article.find(params[:id])
+    @recent_posts = Article.limit(5).order("created_at DESC")
+    @categories   = Tag.limit(6).order("name")
   end
+
 
   def new
     @article = Article.new
   end
 
   def create
+    
     @article = Article.new(params[:article])
 
     @article.save

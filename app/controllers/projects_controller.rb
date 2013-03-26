@@ -8,7 +8,8 @@ class ProjectsController < ApplicationController
 
   def show
     #binding.pry
-    @project = Project.find(params[:id])
+    @project      = Project.find(params[:id])
+    @projects     = Project.limit(5).order("created_at DESC")
   end
 
   def new

@@ -7,5 +7,6 @@
     </li>
   <% end %>
 </ul>
-
+<% if logged_in? %>
 <%= link_to "New Portfolio Project", new_project_path, :class => "new_project" %>
+ <% end %>

@@ -1,15 +1,93 @@
-<h1><%= @project.title %></h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+  </head>
 
-<p><%= @project.body %></p>
+  <body>
+  	<!-- MAIN CONTAINER BEGINS -->
+	<div class="container">
+		
+					
+				
+			<div class="row">
+				<div class="span12">
+    <!-- Welcome Text -->
+					<h2>5280 Web Design-Projects</h2>
+    <!-- /END Welcome Text -->
+    <!-- /Featured Image -->
+				<br>
+				<br>
+					<div style="text-align:center">
+					<% if @project.image_file_name %>
+  						<p><%= image_tag @project.image.url %></p>
+					<% end %>
+					</div>
+							
+			<!--	<img src="/assets/img/blog/post2.jpg" alt="Client Case"> -->
+    <!-- /END Feature Image -->
+    
+    <!-- DESCRIPTION -->
+					<div class="thumbnails">
+    				<!-- Text -->
+						<li class="span9">
+						<br>
+						<br>
+						
+							<h4><%= @project.title %></h4>
 
-<% if @project.image_file_name %>
-  <p><%= image_tag @project.image.url %></p>
-<% end %>
+							
+							<p><%= @project.body.gsub("\n", "<br>\n").html_safe%></p>
 
-<%= link_to "<< Back to Portfolio List", projects_path %>
+						</li>
+    				<!-- sidebar -->
+						<li class="span3">
+							<p><h4>Launch Site</h4></p>
+							
+							<p><a href="http://<%= @project.website_name %>" style="color:#b8413e"><%= @project.website_name %></a></p>
+							
+							<br>
+							<p><h4>Services</h4></p>
+			         		<p><i class="icon-briefcase"></i> Web Design</p>
+			         		<p><i class="icon-wrench"></i> Web Development</p>
+			         		<p><i class="icon-comment"></i> Social Media</p>
+							<br>
+							<h4>Team Leader</h4>
+							<p><img src="/assets/img/face60x60.png" alt="Marcel Newman"> Daniel S.</p>
 
-<% if logged_in? %>
-  <%= link_to "edit", edit_project_path(@project) %>
+						</li>
 
-  <%= link_to "delete", project_path(@project), :method => :delete, :confirm => "Really delete the portfolio item?" %>
-<% end %>
+
+
+						<div class="sidebar">
+							<li class="span2">
+								<p><h4>Recent Work</h4></p>
+								<ul>
+        						<% for project in @projects %>
+        						<li><%=h link_to project.title, project_path(project) %></li>
+       							 <% end %>
+    							</ul>
+    							<%= link_to "<< Back to Portfolio List", projects_path %>
+
+								<% if logged_in? %>
+  								<%= link_to "edit", edit_project_path(@project) %>
+
+  								<%= link_to "delete", project_path(@project), :method => :delete, :confirm => "Really delete the portfolio item?" %>
+								<% end %>
+    						</li>	
+    					</div>
+
+    					
+						
+					</div>
+    <!-- /END DESCRIPTION -->
+					
+				</div><!-- /span12 -->
+			</div><!-- /row -->
+    </div> <!-- /container -->
+
+	<!-- FOOTER -->
+	
+  </body>
+</html>
+

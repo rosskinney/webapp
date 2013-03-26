@@ -162,15 +162,25 @@ body {
   background-color: #ffffff;
 }
 
-a {
+ a {
+  color: #b9413e; /*005580 ORIGINAL COLOR*/
+  text-decoration: underline;
+}
+
+
+.nav a {
   color: #fff;
   text-decoration: none;
 }
 
-a:hover {
+ a:hover {
   color: #b9413e; /*005580 ORIGINAL COLOR*/
   text-decoration: underline;
 }
+
+
+
+
 
 .img-rounded {
   -webkit-border-radius: 6px;

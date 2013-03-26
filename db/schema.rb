@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319194440) do
+ActiveRecord::Schema.define(:version => 20130325030404) do
 
   create_table "actors", :force => true do |t|
     t.string   "first_name", :limit => 250
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130319194440) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "author_name"
   end
 
   create_table "auction_items", :force => true do |t|
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130319194440) do
     t.string   "salt"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.text     "author_name"
   end
 
   create_table "awards", :force => true do |t|

@@ -1,22 +1,97 @@
-<h1><%= @article.title %></h1>
-<p>Categories: <%= tag_links(@article.tags) %></p>
+<div class="container">
+    
+			<div class="row">
+				<div class="span12">
+    <!-- Welcome Text -->
+					<h2>5280 Web Design Articles</h2>
+    <!-- /END Welcome Text -->
+    <!-- /Featured Image -->
+				<br>
+				<br>
+				<img src="/assets/img/blog/post3.jpg" alt="">
+    <!-- /END Feature Image -->
 
-<p><%= @article.body %></p>
+					<div class="thumbnails">
+    				<!-- Begins Left Sidebar -->
+						<div class="sidebar">
+							<li class="span2">
+								<p><h4>Recent Posts</h4></p>
+								<ul>
+        						<% for article in @recent_posts %>
+        						<li><%=h link_to article.title, article_path(article) %></li>
+       							 <% end %>
+    							</ul>	
+								<hr class="dashed">
+								<p><h4>Video Widget</h4></p>
+									<div class="video-container-post">
+										<iframe src="http://player.vimeo.com/video/46304267?title=0&byline=0&color=C84D50" width="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+					                </div>
+								<hr class="dashed">
+
+								<p><h4>Categories</h4></p>
+								<ul>
+        						<% for tag in @categories %>
+        						<li><%=h link_to tag.name, tag_path(tag) %></li>
+        							<% end %>
+   								 </ul>
+									
+								<hr class="dashed">
+						</li>
+						</div><!-- /END Left Sidebar -->
+    					
+    					<!-- Begins Post -->
+						<li class="span8">
+						<br>
+						<br>
+						
+							<p><h3 style="color:#b8413e"><%= @article.title %></h3></p>
+							<p><b><%= @article.created_at.strftime("%b %d, %Y") %></b></p>
+							<p style="font-size:10px; color:#b9413e"><i class="icon-folder-open";color:#b9413e></i> <%= tag_links(@article.tags) %> / <i class="icon-comment"></i> (<%= @article.comments.count %>) comments / <i class="icon-user"></i><%= @article.author_name %></p>
+
+							<% if @article.image_file_name %>
+  								<p><%= image_tag @article.image.url %></p>
+							<% end %>
+
+							<p><%= @article.body.gsub("\n", "<br>\n").html_safe%></p>
+
+							
+							<%= render :partial => 'comment', :collection => @article.comments %>
+
+							<%= render :partial => 'comment_form' %>
+
+							<%= link_to "<< Back to Articles List", articles_path %>
+
+							<% if logged_in? %>
+  							<%= link_to "edit", edit_article_path(@article) %>
+
+  							<%= link_to "delete", article_path(@article), :method => :delete, :confirm => "Really delete the article?" %>
+							<% end %>
+
+
+							
+						</li>
+    					<!-- /END Post -->
+    					<!-- Begins Right Sidebar -->
+						<div class="sidebar">
+							<li class="span2">
+								<h4>About The Author</h4>
+									<p><img src="/assets/img/face60x60.png" alt="Marcel Newman"></p>
+									<p><em>Daniel</em> is the lead designer at 5280 Web Design. He has been part of the crew for 8 years. Blogs about Ruby on Rails.</p>
+								<hr class="dashed">
+								<p><h4>Featured Project</h4></p>
+									<img src="/assets/img/featured/f1.jpg">
+								<hr class="dashed">
+							</li>
+						</div>
+    					<!-- /END Right Sidebar -->
+
+					</div><!-- /thumbnails div -->
+				</div><!-- /span12 -->
+			</div><!-- /row -->
+    </div> <!-- /container -->
+
 
 <% if @article.image_file_name %>
   <p><%= image_tag @article.image.url %></p>
 <% end %>
 
-<h3>Comments (<%= @article.comments.count %>)</h3>
-
-<%= render :partial => 'comment', :collection => @article.comments %>
-
-<%= render :partial => 'comment_form' %>
-
-<%= link_to "<< Back to Articles List", articles_path %>
-
-<% if logged_in? %>
-  <%= link_to "edit", edit_article_path(@article) %>
-
-  <%= link_to "delete", article_path(@article), :method => :delete, :confirm => "Really delete the article?" %>
-<% end %>

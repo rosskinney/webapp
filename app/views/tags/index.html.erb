@@ -4,8 +4,11 @@
   <% @tags.each do |tag| %>
     <li>
     <%= link_to tag.name, tag_path(tag) %>
-    &nbsp
-    <%= link_to "destroy", tag_path(tag), :method => :delete %>
+
+    <%= form_for(tag) { |f| %>
+     <input type="hidden" name="_method" value="DELETE">
+     <button>Destroy</button><% } %>
+
     </li>
   <% end %>
 </ul>

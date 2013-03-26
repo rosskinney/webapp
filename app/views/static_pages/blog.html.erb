@@ -1,74 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Agentrap - Responsive Bootstrap Agency Theme</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <link href="/stylesheets/bootstrap.css" rel="stylesheet">  
-    <link href="/stylesheets/main.css" rel="stylesheet">
-
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
     
-    <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-  <link rel='stylesheet' id='prettyphoto-css'  href="/stylesheets/prettyPhoto.css" type='text/css' media='all'>
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
-    
-    <!-- Google Fonts call. Font Used Open Sans -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'>
 
   </head>
 
   <body>
     <!-- MAIN CONTAINER BEGINS -->
   <div class="container">
-    <div id="header_bg"></div> <!-- Display top header background -->
-      <div class="row">
-        <div class="span12">
-          <div id="logo"><img src="/images/coollogo.png" alt="Logo"></div><!-- Display Logo -->
     
-    <!-- Navigation -->
-          <nav>
-          <ul class="nav pull-right nav-pills">
-            <li class="active">
-                <a href="home.html">Home</a>
-             </li>
-            
-                <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-          </nav>  
-  	<!-- /END Navigation -->
-					
-				</div><!--/span12 -->
-			</div> <!--/row -->
-    <!-- /END TOP PART -->
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
 			<div class="row">
 				<div class="span12">
     <!-- Welcome Text -->
@@ -85,23 +25,25 @@
 						<div class="sidebar">
 							<li class="span2">
 								<p><h4>Recent Posts</h4></p>
-									<p><a href="#">Post Title 1</a></p>
-									<p><a href="#">Post Title 2</a></p>
-									<p><a href="#">Post Title 3</a></p>
-									<p><a href="#">Post Title 4</a></p>
+								<ul>
+        						<% for article in @recent_posts %>
+        						<li><%=h link_to article.title, article_path(article) %></li>
+       							 <% end %>
+    							</ul>	
 								<hr class="dashed">
 								<p><h4>Video Widget</h4></p>
 									<div class="video-container-post">
 										<iframe src="http://player.vimeo.com/video/46304267?title=0&byline=0&color=C84D50" width="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 					                </div>
 								<hr class="dashed">
+
 								<p><h4>Categories</h4></p>
-									<p><a href="#"><i class="icon-folder-open"></i> &nbsp;Category 1</a></p>
-									<p><a href="#"><i class="icon-folder-open"></i> &nbsp;Category 2</a></p>
-									<p><a href="#"><i class="icon-folder-open"></i> &nbsp;Category 3</a></p>
-									<p><a href="#"><i class="icon-folder-open"></i> &nbsp;Category 4</a></p>
-									<p><a href="#"><i class="icon-folder-open"></i> &nbsp;Category 5</a></p>
-									<p><a href="#"><i class="icon-folder-open"></i> &nbsp;Category 6</a></p>
+								<ul>
+        						<% for tag in @categories %>
+        						<li><%=h link_to tag.name, tag_path(tag) %></li>
+        							<% end %>
+   								 </ul>
+									
 								<hr class="dashed">
 						</li>
 						</div><!-- /END Left Sidebar -->
@@ -110,12 +52,14 @@
 						<li class="span8">
 						<br>
 						<br>
-							<p><h3 style="color:#b8413e">LOREM IPSUM</h3></p>
-							<p><b>October 3, 2012</b></p>
-							<p style="font-size:10px; color:#b9413e"><i class="icon-folder-open"></i> Web Design / <i class="icon-comment"></i> 0 Comments / <i class="icon-user"></i> Marcel</p>
-							<p>The company approached us with the need for a new website that accentuated their extraordinary brand. Instead of repurposing content from their old site, we scrapped everything and worked with Optimo to produce content that represented the undeniable quality of their products.</p>
-							<p>Our mission was to find the best way to showcase their current collection. We worked with product photographer Peter Parker to capture the superior quality of finishes, timeless shapes and gorgeous colors of each product. After countless hours of image production and development, the results appear on the website, weightlessly floating above a shadow that is dynamically drawn in Flash.</p>
-							<p>Throughout the website you'll come across videos that convey the history, the quality of materials and what truly makes their brand unique.</p>
+						
+							<p><h3 style="color:#b8413e"><%= @article.title %></h3></p>
+							<p><b><%= @article.created_at.strftime("%b %d, %Y") %></b></p>
+							<p style="font-size:10px; color:#b9413e"><i class="icon-folder-open";color:#b9413e></i> <%= tag_links(@article.tags) %> / <i class="icon-comment"></i> (<%= @article.comments.count %>) comments / <i class="icon-user"></i><%= @article.author_name %></p>
+
+							
+							<p><%= @article.body.gsub("\n", "<br>\n").html_safe%></p>
+							
 							
 						</li>
     					<!-- /END Post -->
@@ -124,7 +68,7 @@
 							<li class="span2">
 								<h4>About The Author</h4>
 									<p><img src="/assets/img/face60x60.png" alt="Marcel Newman"></p>
-									<p><em>Marcel Newman</em> is the lead designer at 5280 Web Design. He has been part of the crew for 8 years. Blogs about design and social media.</p>
+									<p><em>Daniel</em> is the lead designer at 5280 Web Design. He has been part of the crew for 8 years. Blogs about Ruby on Rails.</p>
 								<hr class="dashed">
 								<p><h4>Featured Project</h4></p>
 									<img src="/assets/img/featured/f1.jpg">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325030404) do
+ActiveRecord::Schema.define(:version => 20130327175934) do
 
   create_table "actors", :force => true do |t|
     t.string   "first_name", :limit => 250
@@ -210,7 +210,7 @@ ActiveRecord::Schema.define(:version => 20130325030404) do
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.text     "author_name"
+    t.text     "developer_name"
     t.text     "website_name"
     t.string   "image_file_name"
     t.string   "image_content_type"

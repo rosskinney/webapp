@@ -1,5 +1,8 @@
 <h1>All Articles</h1>
 
+<%= link_to "RSS Feed", article_url(:rss) %>
+<br></br>
+
 <ul>
   <% @articles.each do |article| %>
     <li>

@@ -1,6 +1,6 @@
 development:
-  adapter: postgresql
-  host: localhost
+  adapter:  postgresql
+  host:     localhost
   database: postgres
   username: postgres
   password: postgres

@@ -2,10 +2,9 @@ class ArticlesController < ApplicationController
   before_filter :require_login, :except => [:index, :show]
   
   def index
-    @articles = Article.paginate(:page => params[:page], :per_page => 10)
-    respond_to do |format|
-    format.rss { render :layout => false }
-    end
+    @articles = Article.paginate(:page => params[:page], :per_page => 15)
+    
+   
   end
 
   def show

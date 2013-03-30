@@ -3,16 +3,17 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.paginate(:page => params[:page], :per_page => 15)
-    
-   
-  end
 
+    @years_and_months = Article.years_and_months
+    Article.by_years_and_months( params[:year_and_month_string] )
+    
+  end
+   
   def show
     @article      = Article.find(params[:id])
     @recent_posts = Article.limit(5).order("created_at DESC")
     @categories   = Tag.limit(6).order("name")
   end
-
 
   def new
     @article = Article.new

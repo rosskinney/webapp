@@ -7,9 +7,10 @@ class Article < ActiveRecord::Base
 
   has_attached_file :image
 
+  
   def tag_list
     return self.tags.join(", ")
-  end
+  end # end of tag list
 
   def tag_list=(tags_string)
     self.taggings.destroy_all
@@ -20,6 +21,33 @@ class Article < ActiveRecord::Base
       tag = Tag.find_or_create_by_name(tag_name)
       tagging = self.taggings.new
       tagging.tag_id = tag.id
-    end
-  end
-end
+    end # end of do iteration
+  end  # end of tag_list
+
+#binding.pry
+=begin
+  scope :by_years_and_months, lambda {|year_and_month_string| 
+      years_and_months.to_s = Date.parse( year_and_month_string )
+      
+      where("YEAR(created_at) = ? AND MONTH(created_at) = ?",
+        year_and_month.year, year_and_month.month)
+    
+  } # end of scope by year and monthS
+  
+
+  scope :years_and_months do
+
+
+
+    Article.select("DISTINCT YEAR(created_at), MONTH(created_at)")
+  end  # end of scope for years and months
+=end
+
+
+end  # end of Article class
+
+
+
+
+  
+

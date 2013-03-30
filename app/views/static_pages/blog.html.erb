@@ -29,7 +29,26 @@
         						<% for article in @recent_posts %>
         						<li><%=h link_to article.title, article_path(article) %></li>
        							 <% end %>
-    							</ul>	
+    							</ul>
+    							<!-- /Start Select by month and year -->
+	
+    							<p><h4>Archives</h4></p>
+    							
+    							
+								<ul>
+								<% @archive_list.each do |item| -%>
+								<li><%= link_to(item[0], :year => item[1], :month => item[2]) %></li>
+								<% end -%>
+								</ul>
+    							<!--<li><a href="/index.html"></a></li> -->
+
+    							<!--<%= form_tag %> -->
+  								<!-- <%= select_tag(:year_and_month_string, @years_and_months) %> -->
+  								
+								
+								<!-- /End Select by month and year -->
+								
+
 								<hr class="dashed">
 								<p><h4>Video Widget</h4></p>
 									<div class="video-container-post">

@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
 
   before_filter  :set_archive_list
+
   def home
+
   end
 
   def portfolio
@@ -11,9 +13,11 @@ class StaticPagesController < ApplicationController
   end
 
   def services
+
   end
 
   def about
+
   end
 
   def blog
@@ -25,7 +29,7 @@ class StaticPagesController < ApplicationController
   end
 
    def set_archive_list
-    binding.pry
+    
     posts = Article.find(:all,:order => "created_at DESC")
     @archive_list = posts.collect do |p|
       [p.created_at.strftime("%b %Y"), p.created_at.year, p.created_at.month]
@@ -34,13 +38,21 @@ class StaticPagesController < ApplicationController
   end
 
 
-
   def contact
 
   end
 
   def archives
-
+    binding.pry
+    start_time = Time.mktime( params[:year] || 2013, 
+                              params[:month] || 1, 
+                              params[:day] || 1)
+    end_time = start_time.next_month
+    @posts = Article.find(:all, 
+      
+      :conditions => ["created_at BETWEEN ? AND ?", start_time, end_time], 
+      :order => "created_at DESC")
+    render(:action => 'archives')
   end
 
 end  # end of class

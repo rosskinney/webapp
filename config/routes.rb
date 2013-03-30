@@ -21,12 +21,15 @@ WebApp::Application.routes.draw do
   resources :articles
   resources :tags
   resources :projects
-  resources :archives
+  
+  resources :archives, only: [ :index, :show ]
+
+  match 'archives'  => 'archives#index'
+
+  match '/archives' => 'static_pages#archives', :as  => :archives
+
 
   
-
-  
- 
   
 
 end

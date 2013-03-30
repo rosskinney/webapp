@@ -33,20 +33,18 @@
     							<!-- /Start Select by month and year -->
 	
     							<p><h4>Archives</h4></p>
+
     							
-    							
-								<ul>
+  								<ul>
 								<% @archive_list.each do |item| -%>
-								<li><%= link_to(item[0], :year => item[1], :month => item[2]) %></li>
+								
+    							
+
+								<li><%= link_to(item[0], :action => 'archives', :year => item[1], :month => item[2]) %></li>
 								<% end -%>
 								</ul>
-    							<!--<li><a href="/index.html"></a></li> -->
-
-    							<!--<%= form_tag %> -->
-  								<!-- <%= select_tag(:year_and_month_string, @years_and_months) %> -->
-  								
 								
-								<!-- /End Select by month and year -->
+								
 								
 
 								<hr class="dashed">
@@ -82,6 +80,15 @@
 
 							
 							<p><%= @article.body.gsub("\n", "<br>\n").html_safe%></p>
+
+							<span class='st_sharethis_large' displayText='ShareThis'></span>
+							<span class='st_facebook_large' displayText='Facebook'></span>
+							<span class='st_twitter_large' displayText='Tweet'></span>
+							<span class='st_linkedin_large' displayText='LinkedIn'></span>
+							<span class='st_tumblr_large' displayText='Tumblr'></span>
+							<span class='st_reddit_large' displayText='Reddit'></span>
+							<span class='st_pinterest_large' displayText='Pinterest'></span>
+							<span class='st_email_large' displayText='Email'></span>
 							
 							
 						</li>

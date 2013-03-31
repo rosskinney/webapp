@@ -7,6 +7,25 @@ class Article < ActiveRecord::Base
 
   has_attached_file :image
 
+  scope :years_and_months, (lambda do
+    year = "date_part('year', created_at) AS YEAR"
+    month = "date_part('month', created_at) AS MONTH"
+    select("DISTINCT #{year}, #{month}").order("year DESC, month DESC")
+  end)
+
+  scope :by_year_and_month, (lambda do |year_and_month_string|
+    year_and_month = Date.parse(year_and_month_string)
+    sql = "date_part('year', created_at) = ? AND date_part('month', created_at) = ?"
+
+    where([sql, year_and_month.year, year_and_month.month])
+  end)
+
+  def self.formatted_years_and_months
+    years_and_months.map do |ym|
+      "#{ Date::MONTHNAMES[ym.month.to_i] } #{ ym.year }"
+    end
+  end
+
   def tag_list
     return self.tags.join(", ")
   end

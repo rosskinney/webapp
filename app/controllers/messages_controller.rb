@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
         @from_email    = @message.email
         @from_name     = @message.name
         @from_message  = @message.content
-        binding.pry
+        
       Pony.mail({
         :to      => @email,
         :from    => @message.email,

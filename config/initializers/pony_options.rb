@@ -1,5 +1,5 @@
 Pony.options = {
-  :from  => 
+  :from  => "railspup@gmail.com",
   :via   => :smtp,
   :via_options => {
     :address              => "smtp.gmail.com",
@@ -14,3 +14,15 @@ Pony.options = {
 
 
 
+"Thank you #{params["contactName"]},
+
+Your inquiry has been recieved. Someone will contact you shortly regarding the information you sent.
+
+Name: #{params["contactName"]}
+Email: #{params["email"]}
+Phone: #{params["phone"]}
+Question: #{params["question"]}
+
+Thank you.
+Rebecca
+Recipe Book Developer",

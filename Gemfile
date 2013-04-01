@@ -5,6 +5,7 @@ gem 'sorcery'
 gem "paperclip"
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
+ 
 gem 'pony'
 
 #gem 'bootstrap-sass', '2.0.4'
@@ -38,6 +39,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+gem 'active_attr'
 gem 'annotate', '2.5.0', group: :development
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

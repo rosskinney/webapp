@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.paginate(:page => params[:page], :per_page => 15)
 
-    @years_and_months = Article.years_and_months
-    Article.by_years_and_months( params[:year_and_month_string] )
+    #@years_and_months = Article.years_and_months
+    #Article.by_years_and_months( params[:year_and_month_string] )
     
   end
    

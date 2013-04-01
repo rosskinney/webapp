@@ -8,6 +8,7 @@ WebApp::Application.routes.draw do
   match 'about'      => 'static_pages#about'
   match 'blog'       => 'static_pages#blog'
   match 'contact'    => 'static_pages#contact'
+  post 'contact'     => 'static_pages#contact'
   match 'feed'       => 'static_pages#feed'
 
   resources :authors
@@ -21,6 +22,7 @@ WebApp::Application.routes.draw do
   resources :articles
   resources :tags
   resources :projects
+  resources :messages
   
   resources :archives, only: [ :index, :show ]
 
@@ -28,8 +30,5 @@ WebApp::Application.routes.draw do
 
   match '/archives' => 'static_pages#archives', :as  => :archives
 
-
-  
-  
 
 end

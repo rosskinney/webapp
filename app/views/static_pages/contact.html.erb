@@ -33,22 +33,24 @@
 					<h2 class="section_header">Contact</h2>
 					<div class="form-horizontal row">
 						<ul class="span9">
-							<form class="well">
+							<form method="post" action="/contact",class="well">
 							  <label style="font-size:18px;">Name:</label>
-							  <input type="text" class="span6" placeholder="Your Name...">
+							  <input type="text" class="span6" name="contact_name" placeholder="Your Name...">
 							  <br>
 							  <br>
 							  <label style="font-size:18px;">Email:</label>
-							  <input type="text" class="span6" placeholder="Your Email...">
+							  <input type="text" class="span6" name="contact_email" placeholder="Your Email...">
 							  <br>
 							  <br>
 							  <label style="font-size:18px;">Your Text:</label>
-							  <textarea class="input-xlarge span6" id="textarea" rows="5"></textarea>
+							  <textarea class="input-xlarge span6"name="contact_message" id="textarea" rows="12"></textarea>
 							  <br>
 							  <br>
 							  <button type="submit" class="btn-danger btn btn-large">Submit</button>
 							</form>
+							
 						</ul>
+
 						<ul class="span3">
 							
 

@@ -7,8 +7,8 @@ WebApp::Application.routes.draw do
   match 'services'   => 'static_pages#services'
   match 'about'      => 'static_pages#about'
   match 'blog'       => 'static_pages#blog'
-  match 'contact'    => 'static_pages#contact'
-  post 'contact'     => 'static_pages#contact'
+  #match 'contact'    => 'static_pages#contact'
+  #post 'contact'     => 'static_pages#contact'
   match 'feed'       => 'static_pages#feed'
 
   resources :authors
@@ -23,6 +23,8 @@ WebApp::Application.routes.draw do
   resources :tags
   resources :projects
   resources :messages
+
+  match 'contact'  => 'messages#new'
   
   resources :archives, only: [ :index, :show ]
 

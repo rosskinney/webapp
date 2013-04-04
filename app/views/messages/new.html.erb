@@ -1,27 +1,88 @@
 <h1>Contact Us</h1>
 
-<%= form_for @message do |f| %>
-  <% if @message.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :content, "Message" %><br />
-    <%= f.text_area :content, :rows => 5 %>
-  </div>
-  <div class="actions"><%= f.submit "Send Message" %></div>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+  </head>
+
+  <body>
+    <!-- MAIN CONTAINER BEGINS -->
+  <div class="container">
+    
+      <div class="row">
+        <div class="span12">
+    <!-- Welcome Message -->
+          <h2>Where in the world is 5280 Web Design?</h2>
+          <h2>Beautiful, Denver Colorado</h2>
+    <!-- /END Welcome Message -->
+          <br>
+          <br>
+          <div class="contact_body">
+          
+           <!--<img src="/assets/img/featured/citypark.jpg" alt=""> -->
+           <div style="text-align:center">
+
+                <p><img src="/assets/img/featured/CityPark.jpg"></p></div>
+           
+          </div>
+    <!-- "Map" Message -->
+          <h2 class="section_header hidden-phone">Map</h2>        
+                <div class="map hidden-phone"><iframe width="100%" height="420" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=4610+S+Ulster+St,+Denver,+CO&amp;aq=0&amp;oq=4610+S.+Ulster,+&amp;sll=39.630656,-104.895172&amp;sspn=0.309368,0.617294&amp;ie=UTF8&amp;hq=&amp;hnear=4610+S+Ulster+St,+Denver,+Colorado+80237&amp;t=m&amp;z=14&amp;iwloc=A&amp;ll=39.63183,-104.894889&amp;output=embed"></iframe></div>
+    <!-- /END "Map" Message -->
+    <!-- Contact Section -->
+
+          <h2 class="section_header">Contact</h2>
+          <div class="form-horizontal row">
+            <ul class="span9">
+              <%= form_for @message do |f| %>
+              <% if @message.errors.any? %>
+               <div class="error_messages">
+                <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+                <ul>
+                  <% @message.errors.full_messages.each do |msg| %>
+                 <li><%= msg %></li>
+                  <% end %>
+                 </ul>
+                 </div>
+                  <% end %>
+                  <label style="font-size:18px;">Name:</label>
+                <input type="text" class="span6" <%= f.text_field :name %> <placeholder="Your Name...">
+                <br>
+                <br>
+                <label style="font-size:18px;">Email:</label>
+                <input type="text" class="span6" <%= f.text_field :email %> <placeholder="Your Email...">
+                <br>
+                <br>
+
+                <label style="font-size:18px;">Your Text:</label>
+                <textarea class="input-xlarge span6" <%= f.text_area :content  %><id ="textarea" rows="06"></textarea>
+                <br>
+                 
+                 
+                <button type="submit" class="btn-danger btn btn-large" <%= f.submit "" %> Send Message</button>
+                
+                
+                <% end %>
+              </ul>
+            <ul class="span3">
+              
+
+                <p><img src="/assets/img/featured/4610ulster.jpg"></p>
+          </div>
+                    <hr class="dashed">
+    <!-- /END Contact Section -->
+          <br>
+          <br>
+        </div><!-- /span12 -->
+      </div><!-- /row -->
+    </div> <!-- /container -->
+
+  <!-- FOOTER -->
+  
+  </body>
+</html>
+
+
+

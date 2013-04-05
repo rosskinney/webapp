@@ -24,7 +24,7 @@ WebApp::Application.routes.draw do
   resources :projects
   resources :messages
 
-  match 'contact'  => 'messages#new'
+  match 'contact'  => 'messages#new'   
   
   resources :archives, only: [ :index, :show ]
 

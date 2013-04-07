@@ -20,6 +20,8 @@ WebApp::Application.routes.draw do
   
   resources :comments
   resources :articles
+  
+
   resources :tags
   resources :projects
   resources :messages

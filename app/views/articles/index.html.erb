@@ -1,8 +1,25 @@
 <h2>All Articles</h2>
 
+<%= form_tag articles_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    
+    <button type="submit" class="btn-danger btn btn-medium">Search</button>
+
+                
+                
+                
+  </p>
+<% end %>
+
+
+
 <% content_for :head, auto_discovery_link_tag(:atom, articles_url(format: "atom")) %>
 
 <%= link_to image_tag("/assets/img/social/Feed.png"), "http://feeds.feedburner.com/5280webdesign" %>
+
+
+
 <br></br>
 
 <ul>
@@ -13,7 +30,7 @@
   <% end %>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate %> 
 
 <% if logged_in? %>
  <%= link_to "New Article", new_article_path, :class => "new_article" %>

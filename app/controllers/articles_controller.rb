@@ -2,13 +2,14 @@ class ArticlesController < ApplicationController
   before_filter :require_login, :except => [:index, :show]
   
   def index
-    @articles = Article.paginate(:page => params[:page], :per_page => 15)
-
-    #@years_and_months = Article.years_and_months
-    #Article.by_years_and_months( params[:year_and_month_string] )
+    @articles = Article.paginate(:page => params[:page], :per_page => 12)
+    
+    @articles = Article.where("title ILIKE '%#{params[:search]}%'").order('id').page(params[:page]).per_page(12)
     
   end
-   
+  
+  
+  
   def show
     @article      = Article.find(params[:id])
     @recent_posts = Article.limit(5).order("created_at DESC")

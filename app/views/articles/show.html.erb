@@ -8,7 +8,10 @@
     <!-- /Featured Image -->
 				<br>
 				<br>
+				
+							
 				<img src="/assets/img/blog/post3.jpg" alt="">
+				
     <!-- /END Feature Image -->
 
 					<div class="thumbnails">
@@ -47,10 +50,11 @@
 							<p><h3 style="color:#b8413e"><%= @article.title %></h3></p>
 							<p><b><%= @article.created_at.strftime("%b %d, %Y") %></b></p>
 							<p style="font-size:10px; color:#b9413e"><i class="icon-folder-open";color:#b9413e></i> <%= tag_links(@article.tags) %> / <i class="icon-comment"></i> (<%= @article.comments.count %>) comments / <i class="icon-user"></i><%= @article.author_name %></p>
-
+							<div style="text-align:center">
 							<% if @article.image_file_name %>
   								<p><%= image_tag @article.image.url %></p>
 							<% end %>
+							</div>
 
 							<p><%= @article.body.gsub("\n", "<br>\n").html_safe%></p>
 

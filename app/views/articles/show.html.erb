@@ -56,9 +56,11 @@
 							<% end %>
 							</div>
 
+							
 							<p><%= @article.body.gsub("\n", "<br>\n").html_safe%></p>
 
-							
+
+
 							<%= render :partial => 'comment', :collection => @article.comments %>
 
 							<%= render :partial => 'comment_form' %>

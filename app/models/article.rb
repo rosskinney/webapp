@@ -5,7 +5,9 @@ class Article < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
-  has_attached_file :image
+  has_attached_file :image,
+  :url  => "/assets/articles/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/articles/:id/:style/:basename.:extension"
 
   def self.search(search)
     if search

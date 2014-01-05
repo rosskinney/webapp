@@ -3,13 +3,13 @@ WebApp::Application.routes.draw do
   
   #get "static_pages/home"
   match 'home'       => 'static_pages#home'
-  match 'portfolio'  => 'static_pages#portfolio'
-  match 'services'   => 'static_pages#services'
-  match 'about'      => 'static_pages#about'
-  match 'blog'       => 'static_pages#blog'
-  #match 'contact'    => 'static_pages#contact'
-  #post 'contact'     => 'static_pages#contact'
-  match 'feed'       => 'static_pages#feed'
+  # match 'portfolio'  => 'static_pages#portfolio'
+  # match 'services'   => 'static_pages#services'
+  # match 'about'      => 'static_pages#about'
+  # match 'blog'       => 'static_pages#blog'
+  # #match 'contact'    => 'static_pages#contact'
+  # #post 'contact'     => 'static_pages#contact'
+  # match 'feed'       => 'static_pages#feed'
 
   resources :authors
 
